@@ -7,8 +7,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Blossoming Flowers at Magical Night</title>
+    <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          align-items: center;
+          height: 100vh;
+          background-color: #1a1a1a;
+          color: white;
+          font-family: Arial, sans-serif;
+          margin: 0;
+      }
+
+       /* Kiểu cho nút */
+       #changeContentBtn {
+          background-color: #008CBA; /* Màu nền nút */
+          color: white; /* Màu chữ */
+          border: none; /* Bỏ viền */
+          padding: 10px 20px; /* Khoảng cách bên trong */
+          text-align: center; /* Căn giữa chữ */
+          text-decoration: none; /* Bỏ gạch chân */
+          display: inline-block; /* Để nút nằm trong dòng */
+          font-size: 1.2em; /* Kích thước chữ */
+          cursor: pointer; /* Hiển thị con trỏ chuột như nút */
+          border-radius: 5px; /* Bo tròn góc nút */
+          transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+          margin-top: 20px; /* Khoảng cách giữa nội dung và nút */
+      }
+
+      #changeContentBtn:hover {
+          background-color: #ff1493;
+          transform: scale(1.05);
+      }
+
+      #initialContent {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+
+      #flowerContent {
+          display: none;
+      }
+      /* Kiểu cho bức ảnh */
+      .flower-image {
+          max-width: 15%; /* Đảm bảo ảnh không vượt quá chiều rộng màn hình */
+          height: auto; /* Giữ tỉ lệ khung hình của ảnh */
+          margin: 20px 0; /* Khoảng cách phía trên và dưới */
+      }
+    </style>
 </head>
 <body class="not-loaded">
+  <!-- Nội dung hiển thị ban đầu -->
+  <div id="initialContent">
+    <h1>HAPPY WOMAN'S DAY - 20/10 <3!</h1>
+    <h2>Hello Thu Trang ^^</h2>
+    <p1>Nhân dịp ngày 20/10 >< <br>
+    Chúc bạn tui hay ăn chóng lớn và ngoan ngoãn hé ~~ <br>
+    Luôn vui vẻ và nở nụ cười trên môi không được tiêu cực aaaaa '^' <br>
+    Chúc bạn ngày càng xinh xắn, dễ thương mong bạn có tất cả trừ vất vả he ^^</p1>
+</div>
+<img src="abc.jpg" alt="Mô tả ảnh" class="flower-image">
+
+<!-- Nút để chuyển đổi nội dung -->
+<button id="changeContentBtn">Khám Phá Hoa Nở</button>
+
+<!-- Phần nội dung hoa sẽ xuất hiện sau khi nhấn nút -->
+<div id="flowerContent">
+    <div class="night"></div>
   <div class="night"></div>
   <div class="flowers">
     <div class="flower flower--1">
@@ -306,10 +372,23 @@
       </div>
     </div>
   </div>
-  <audio autoplay muted loop>
-    <source src="cute.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Thẻ audio để phát nhạc -->
+  <audio id="backgroundMusic" src="cute.mp3" preload="auto"></audio>
+
+  <script src="main.js"></script>
+  <script>
+      document.getElementById('changeContentBtn').addEventListener('click', function() {
+          // Hiện nội dung hoa
+          document.getElementById('flowerContent').style.display = 'block';
+          
+          // Ẩn nội dung ban đầu
+          document.getElementById('initialContent').style.display = 'none';
+
+          // Phát nhạc
+          const audio = document.getElementById('backgroundMusic');
+          audio.play();
+      });
+  </script>
 </body>
 </html>
 <script src="main.js"></script>
